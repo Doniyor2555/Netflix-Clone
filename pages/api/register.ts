@@ -8,7 +8,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       return res.status(405).end();
     }
 
-    const { email, name, password } = req.body;
+    const { email, name, password } = await req.body;
 
     const existingUser = await prismadb.user.findUnique({
       where: {
